@@ -293,32 +293,24 @@ setPatients(data);
 
   useEffect(() => { fetchPatients(); }, []);
 
-const handleUpload = async (e, index) => {
+const handleUpload = async (e, patientId) => {
   const file = e.target.files[0];
   if (!file) return;
 
   try {
-    const name = patients[index].name;
-
-    // upload ke firebase storage
     const fileRef = ref(storage, `files/${Date.now()}-${file.name}`);
     await uploadBytes(fileRef, file);
-
     const url = await getDownloadURL(fileRef);
 
-    // update data di firestore
-const patientRef = doc(db, "patients", patients[index].id);
+    const patientRef = doc(db, "patients", patientId);
     await updateDoc(patientRef, {
-      file: {
-        name: file.name,
-        url: url,
-      },
+      file: { name: file.name, url: url },
     });
 
     fetchPatients();
   } catch (err) {
     console.error("Upload error:", err);
-    alert("Upload gagal");
+    alert("Upload gagal: " + err.message);
   }
 };
 
