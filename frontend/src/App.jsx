@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 // 🔥 FIREBASE CLEAN
 import { getDocs, collection, doc, updateDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { db, storage } from "./firebase";
+import { db, storage } from "../firebase";
 
 // ===================== ROOT APP =====================
 export default function App() {
