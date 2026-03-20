@@ -95,15 +95,7 @@ function Card({ title, icon, onClick }) {
   return (
     <div
       onClick={onClick}
-      className="
-        bg-white rounded-2xl 
-        p-6                 /* ⬅️ medium */
-        min-h-[157px]      /* ⬅️ tinggi pas */
-        flex flex-col items-center justify-center
-        shadow-lg
-        hover:scale-105 transition
-        cursor-pointer active:scale-95
-      "
+className="bg-white rounded-2xl p-6 min-h-[157px] flex flex-col items-center justify-center shadow-lg hover:scale-105 transition cursor-pointer active:scale-95"
     >
       <div className="text-5xl mb-3">{icon}</div> {/* ⬅️ tidak terlalu besar */}
       <p className="text-blue-800 text-base font-semibold text-center">
