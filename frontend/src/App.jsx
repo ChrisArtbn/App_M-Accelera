@@ -411,7 +411,7 @@ const handleUpload = async (e, patientId) => {
                       )}
                       <label className="cursor-pointer text-purple-600">
                         <Upload size={16} />
-                        <input type="file" accept="application/pdf" className="hidden" onChange={(e) => handleUpload(e, i)} />
+                        <input type="file" accept="application/pdf" className="hidden" onChange={(e) => handleUpload(e, p.id)} />
                       </label>
                     </div>
                   </div>
