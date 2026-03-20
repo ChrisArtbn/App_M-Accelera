@@ -280,18 +280,16 @@ function PatientPage({ onNavigate }) {
 
 const fetchPatients = async () => {
   try {
-const snapshot = await getDocs(collection(db, "patients"));
-const data = snapshot.docs.map(doc => ({
-  id: doc.id,
-  ...doc.data()
-}));
-setPatients(data);
+    const snapshot = await getDocs(collection(db, "patients"));
+    const data = snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+    setPatients(data);
   } catch (err) {
     console.error("Fetch error:", err);
   }
 };
-
-  useEffect(() => { fetchPatients(); }, []);
 
 const handleUpload = async (e, patientId) => {
   const file = e.target.files[0];
@@ -307,7 +305,8 @@ const handleUpload = async (e, patientId) => {
       file: { name: file.name, url: url },
     });
 
-    fetchPatients();
+    await fetchPatients(); // ⬅️ tambah await di sini
+    alert("Upload berhasil!");
   } catch (err) {
     console.error("Upload error:", err);
     alert("Upload gagal: " + err.message);
